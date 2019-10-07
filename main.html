@@ -1,0 +1,74 @@
+<!-- main.html -->
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet"
+			  type="text/css"
+			  href="main.css"
+		      />	
+  <title>Student Safety</title>
+</head>
+<body>
+    <div class="container">
+
+<nav class="navbar fixed-top navbar-primary bg-primary">
+        {{>loginButtons}}
+</nav>
+<br><br><br>
+
+<div class="jumbotron text-center">
+
+        <h2 >Welcome to Student Safety!</h2>
+      </div>
+      <div class="container">
+
+        Use the following form to report safety issues:
+        {{>reportForm}}
+      </div>
+      <br><br>
+
+        <div class="card">
+
+
+            {{>reports}}
+        </div>
+    </div>
+</body>
+
+<template name="reports">
+    <div class="card-header">
+    <h1> <span class="badge badge-warning">Previously Reported:</span></h1>
+        </div>
+    <br><br>
+
+    <ul style="list-style: none;">
+    {{#each all_reports}}
+    <div class="alert alert-warning" role="alert">
+    <p>"{{des}}" </p> 
+    </div>
+    <li> Reported by {{safer_email createdBy}} </li>
+      <li>{{createdOn}}</li> <br><br>
+    {{/each}}
+    </ul>
+</template>
+
+<template name="reportForm">
+  <div class="container">
+<div class="row">
+  <div class="col-lg-8">
+    <div class="input-group">
+      <textarea rows="10" cols="100" id="des_input" class="form-control" placeholder="Description..."></textarea>
+      
+      <span class="input-group-btn">
+        <button class="btn btn-primary btn-lg js-add-site" type="submit">Report!</button>
+      </span>
+    </div>
+  </div>
+</div>
+</div>
+</template>
+
